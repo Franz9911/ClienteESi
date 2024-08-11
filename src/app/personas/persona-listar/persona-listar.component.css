@@ -1,0 +1,46 @@
+div{
+  padding-left: 30px;
+}
+/*tabla*/
+/*efecto cebra tabla*/ 
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #508C9B;
+}
+
+table {
+  background-color: #508C9B;
+  border-collapse: collapse;    
+}
+tbody tr:hover{
+  background-color: #134B70;    
+} 
+/*degrade en la cabecera*/
+thead th {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.5)
+  );
+  color: aliceblue;
+  padding: 10px;
+}
+
+tbody td {
+  text-align: center;
+  padding: 10px;
+}
+   
+
+/*icono*/
+.icono{
+  font-size: 25px;
+  color: #606676;
+}
+.icono:hover{
+  font-size: 30px;
+  color: #536493;
+}

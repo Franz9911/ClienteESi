@@ -1,0 +1,111 @@
+<p>lote-registrar works!</p>
+<div class="conteiner">
+    <h2>registrar Lotes</h2>
+    <form [formGroup]="loteForm">
+        <div class="form-control">
+            <p>Unidades adquiridas</p>
+            <input
+                formControlName="unidades"
+                type="number"
+                name="unidades"
+                id="unidades"
+            />
+
+            <div class="peligro" [hidden]="loteForm.get('unidades')?.valid ||
+                    loteForm.get('unidades')?.pristine">
+                peligro
+                <span *ngIf="loteForm.get('unidades')?.errors?.['required']"
+                    class="sms-alert">
+                    Este campo no puede quedar vacio
+                </span>
+                <span *ngIf="loteForm.get('unidades')?.errors?.['min']"
+                    class="sms-alert">
+                    No se admiten cantidades negativas
+                </span>
+                <span *ngIf="loteForm.get('unidades')?.errors?.['onlyNumber']"
+                    class="sms-alert">
+                    Este campo solo permite caracteres numericos
+                </span>
+            </div>
+            {{ loteForm.get("unidades")?.errors | json }}
+        </div>
+
+        <div class="form-control">
+            <p>unidades disponibles</p>
+            <input formControlName="unidadesDispo" type="number" />
+            error formulario
+            {{ loteForm.get("unidadesDispo")?.errors | json }}
+        </div>
+
+        <div class="peligro" [hidden]="loteForm.get('unidadesDispo')?.valid ||
+                loteForm.get('unidadesDispo')?.pristine">
+            peligro
+            <span *ngIf="loteForm.get('unidadesDispo')?.errors?.['required']"
+                class="sms-alert">
+                Este campo no puede quedar vacio
+            </span>
+            <span *ngIf="loteForm.get('unidadesDispo')?.errors?.['min']"
+                class="sms-alert">
+                No se admiten cantidades negativas
+            </span>
+            <span *ngIf="loteForm.get('unidadesDispo')?.errors?.['onlyNumber']"
+                class="sms-alert">
+                Este campo solo permite caracteres numericos
+            </span>
+        </div>
+
+        <div *ngIf="loteForm.errors?.['debeSerMenorOIgual']">
+            <span *ngIf="loteForm.errors?.['debeSerMenorOIgual']"
+                class="sms-alert">
+                las unidades disponibles no debe ser mayor que las unidades del
+                lote
+            </span>
+        </div>
+
+        <div class="form-control">
+            <p>costo del lote * en bs</p>
+            <input formControlName="costoLote" type="number" />
+            error formulario
+        </div>
+
+        <div class="form-control">
+            <p>precio de venta del lote</p>
+            <input formControlName="precioVentaLoteSugerido" type="number" />
+        </div>
+
+        <div class="peligro" [hidden]="
+                loteForm.get('precioVentaLoteSugerido')?.valid ||
+                loteForm.get('precioVentaLoteSugerido')?.pristine">
+            <span
+                *ngIf="loteForm.get('precioVentaLoteSugerido')?.errors?.['required']"
+                class="sms-alert">
+                Este campo no puede quedar vacio
+            </span>
+            <span
+                *ngIf="loteForm.get('precioVentaLoteSugerido')?.errors?.['min']"
+                class="sms-alert">
+                No se admiten cantidades negativas
+            </span>
+        </div>
+
+        <div [hidden]="loteForm.get('precioVentaLoteSugerido')?.pristine">
+            <span *ngIf="loteForm.errors?.['profitMargin']" class="sms-alert">
+                para generar un margen de ganacias el precio sugerido debe ser
+                minimamente de: {{loteForm.errors?.['profitMargin']|json}}bs
+            </span>
+        </div>
+
+        <div class="form-control">
+            <p>producto</p>
+            <input formControlName="idProducto" type="number" />
+        </div>
+
+        <button (click)="enviar()" [disabled]="loteForm.invalid">
+            registrar
+        </button>
+    </form>
+    {{ loteForm.errors | json }}
+    <br />
+
+    <br />
+</div>

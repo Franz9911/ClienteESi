@@ -1,0 +1,67 @@
+.contenedor{
+    width: 100%;
+    min-height: 50vh;
+    background: #13a1a2;
+}
+.pie{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ .pie button, .pie h2{
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.cabezera, .contenido , .pie{
+    
+    display: inline-flex;
+    width: 70%;
+    background: #fff;
+}
+.card{
+    margin: 2px;
+    padding: 5px;
+    border-top : 1px solid #000;  
+    display: inline-flex;
+}
+.card-contenido{
+    width: 70%;
+    padding-left:5px;
+    padding-right: 5px;
+}
+.card-img {
+    width: 15%;
+}
+img{
+    width: 95%;
+    height: fit-content;
+    border-radius: 10%;
+}
+p{
+    font-size: 12px;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-btn{   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.card-lote a{
+    font-family: Helvetica, sans-serif,Arial;
+    font-size: 13px;
+    text-align: left;
+}
+
+/*quitar flechitas al imput*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+

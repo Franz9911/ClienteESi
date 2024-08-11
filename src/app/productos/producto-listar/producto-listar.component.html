@@ -1,0 +1,169 @@
+<h2 class="titulo-h2">Lista de Productos</h2>
+<div>
+    <!---->
+    <table class="tabla-gral">
+        <thead>
+            <tr>
+                <!--Código-->
+                <th>Nombre</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Imagen</th>
+                <th>Descripción</th>
+                <!--Acciones-->
+                <!--fecha de registro-->
+                <th>Editar</th>
+                <th>Eliminar</th>
+                <th>carrito ESi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="fila-tb" *ngFor="let producto of productos">
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.marca }}</td>
+                <td>{{ producto.modelo }}</td>
+                <td>
+                    <img [src]="'http://localhost:3001/uploads/' + producto.imagen"
+                    alt="" width="100"height="100"/>
+                </td>
+                <td>{{ producto.descripcion }}</td>
+                <td>
+                    <abbr title="Editar Persona" (click)="editar(producto)">
+                        <fa-icon class="icono" [icon]="faScrewdriverWrench"></fa-icon>
+                    </abbr>
+                </td>
+                <td>
+                    <abbr title="Eliminar Persona" (click)="eliminar(producto.id)">
+                        <fa-icon class="icono" [icon]="faTrashCan"></fa-icon>
+                    </abbr>
+                </td>
+                <td>
+                    <a title="Agregar al carrito" (click)="addLote(producto)" >CarritoESI</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    modal
+    <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby
+        [ngStyle]="{ display: displayStylePopupLote }">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">
+                        Producto: {{ productoPopup.marca }}
+                        {{ productoPopup.nombre }} {{ productoPopup.modelo }}
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <img class="imgPopup" [src]="'http://localhost:3001/uploads/' +productoPopup.imagen" alt=""/>
+                    <form [formGroup]="loteForm">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Detalles del lote
+                        </h5>
+                        <div class="form-group">
+                            unidades
+                            <br />
+                            <input formControlName="unidades" type="number"
+                            class="form-control" id="unidades"/>
+                        </div>
+                        <div class="form-group">
+                            unidades Disponibles
+                            <br />
+                            <input formControlName="unidadesDispo" type="number" 
+                            class="form-control" id="unidadesDispo"/>
+                        </div>
+                        <div class="form-group">
+                            precio de compra
+                            <br />
+                            <input formControlName="costoLote" type="number" 
+                            class="form-control" id="precioCompra"/>
+                        </div>
+                        <div class="form-group">
+                            precio venta del lote
+                            <br />
+                            <input formControlName="precioVentaLoteSugerido" 
+                            type="number" class="form-control" id="precioVentaLote"/>
+                        </div>
+                        <div class="form-group-btn">
+                            <button class="button-modal button-cancel-modal" (click)="closeModalLote()">cerrar</button>
+                            <button class="button-modal button-agregar-modal" (click)="addToCarritoESI()" [disabled]="loteForm.invalid">guardar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <span class="alert-title">Información</span>
+                    <div class="peligro" [hidden]=" loteForm.get('unidades')?.valid ||
+                        loteForm.get('unidades')?.pristine">
+                        <span class="alert-title">Unidades</span><br>
+                        <span *ngIf="loteForm.get('unidades')?.errors?.['required']"class="sms-alert">
+                            Este campo no puede quedar vacio
+                            <br>
+                        </span>
+                        <span *ngIf="loteForm.get('unidades')?.errors?.['min']" class="sms-alert">
+                            No se admiten cantidades negativas
+                            <br>
+                        </span>
+                        <span *ngIf="loteForm.get('unidades')?.errors?.['onlyNumber']"class="sms-alert">
+                            Este campo solo permite caracteres numericos
+                            <br>
+                        </span>
+                    </div>
+
+                    <div class="peligro" [hidden]="loteForm.get('unidadesDispo')?.valid || 
+                        loteForm.get('unidadesDispo')?.pristine">
+                        <span class="alert-title">Unidades disponibles</span
+                        ><br />
+                        <span *ngIf="loteForm.get('unidadesDispo')?.errors?.['required']" class="sms-alert">
+                            Este campo no puede quedar vacio <br>
+                        </span>
+                        <span *ngIf="loteForm.get('unidadesDispo')?.errors?.['min']" class="sms-alert" >
+                            No se admiten cantidades negativas <br>
+                        </span>
+                        <span *ngIf="loteForm.get('unidadesDispo')?.errors?.['onlyNumber']" class="sms-alert">
+                            Este campo solo permite caracteres numericos <br>
+                        </span>
+                    </div>
+                    <div *ngIf="loteForm.errors?.['debeSerMenorOIgual']">
+                        <span class="alert-title">Unidades disponibles</span><br>
+                        <span *ngIf="loteForm.errors?.['debeSerMenorOIgual']" class="sms-alert">
+                            las unidades disponibles no debe ser mayor que las
+                            unidades del lote <br>
+                        </span>
+                    </div>
+
+                    <div class="peligro" [hidden]="loteForm.get('costoLote')?.valid || 
+                        loteForm.get('costoLote')?.pristine">
+                        <span class="alert-title">costo del lote</span><br>
+                        <span *ngIf="loteForm.get('costoLote')?.errors?.['required']" class="sms-alert">
+                            Este campo no puede quedar vacio <br>
+                        </span>
+                        <span *ngIf="loteForm.get('costoLote')?.errors?.['min']" class="sms-alert" >
+                            No se admiten cantidades negativas <br>
+                        </span>
+                    </div>
+
+                    <div class="peligro" [hidden]="loteForm.get('precioVentaLoteSugerido')?.valid ||
+                        loteForm.get('precioVentaLoteSugerido')?.pristine">
+                        <span class="alert-title">precio de venta</span><br>
+                        <span *ngIf="loteForm.get('precioVentaLoteSugerido')?.errors?.['required']" class="sms-alert">
+                            Este campo no puede quedar vacio <br>
+                        </span>
+                        <span *ngIf="loteForm.get('precioVentaLoteSugerido')?.errors?.['min']" class="sms-alert">
+                            No se admiten cantidades negativas <br>
+                        </span>
+                    </div>
+
+                    <div *ngIf="loteForm.errors?.['profitMargin'] && loteForm.get('precioVentaLoteSugerido')?.valid ">
+                        <span class="alert-title">precio de venta</span><br>
+                        <span *ngIf="loteForm.errors?.['profitMargin']" class="sms-alert">
+                            para generar un margen de ganacias el precio 
+                            sugerido de todo el lote debe ser minimamente de:
+                            {{loteForm.errors?.['profitMargin']|json}}bs
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

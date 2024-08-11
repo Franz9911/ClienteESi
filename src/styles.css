@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+.titulo-h2{
+    color: #201E43;
+    padding: 0px 10px;
+    font-family: sans-serif
+}
+
+.btn-cerar-sesion{
+    background-color: #f30707; 
+    color: white; 
+    border: none; 
+    padding: 5px 5px;
+    border-radius: 5px; 
+} 
+.btn-Confirmar{
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    padding: 10px 25px;
+    border-radius: 5px; 
+}
+.btn-cancelar{
+    background-color: #606676; 
+    color: white; 
+    border: none; 
+    padding: 10px 25px;
+    border-radius: 5px; 
+}
+.btn:active{
+    
+    transform: scale(0.9);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

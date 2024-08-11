@@ -1,0 +1,124 @@
+div{
+    padding-left: 30px;
+  }
+  /*tabla*/
+  /*efecto cebra tabla*/ 
+  tbody tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #508C9B;
+  }
+  
+  table {
+    background-color: #508C9B;
+    border-collapse: collapse;  
+    box-shadow: 10px 5px 5px #134B70;  
+  }
+  tbody tr:hover{
+    background-color: #134B70;    
+  } 
+  /*degrade en la cabecera*/
+  thead th {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.5)
+    );
+    color: aliceblue;
+    padding: 10px;
+  }
+  
+  tbody td {
+    text-align: center;
+    padding: 10px;
+  }
+     
+  
+  /*icono*/
+  .icono{
+    font-size: 25px;
+    color: #606676;
+  }
+  .icono:hover{
+    font-size: 30px;
+    color: #536493;
+  }
+
+
+  /*modal*/
+  .modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija para que se sobreponga */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    z-index: 1000; /* Asegúrate de que el z-index sea alto */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-dialog {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.modal-header, .modal-body, .modal-footer {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+
+.imgPopup{
+  width: 35%;
+  height: fit-content;
+  border-radius: 10%;
+}
+.modal-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #201E43;
+  color: #EEEEEE;
+}
+.form-group{
+  margin: 3px;
+}
+
+.button-modal{
+  border: none; 
+  padding: 6px 9px;
+  border-radius: 5px; 
+  margin-left: 20px;
+  margin-right: 10px;
+  color: #EEEEEE;
+  font-family: Helvetica, sans-serif,Arial;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.button-cancel-modal{
+  background-color: #FF8F00; 
+  
+
+}
+.button-agregar-modal{
+  background-color: #399918;
+ 
+}
+.modal-footer{
+  background-color: #FF8F00;
+  color: #201E43;
+  font-size: 18px;
+}
+.alert-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: #000; 
+}
+

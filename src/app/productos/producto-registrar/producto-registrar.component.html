@@ -1,0 +1,60 @@
+<h2 class="titulo-h2">Registro de Productos</h2>
+<div class="container">
+  <div class="form-conteiner">
+    <form class="registrarProducto" method="post">
+      <div class="form-group">
+        <span>Nombre</span>
+        <div class="col-md-8">
+          <input id="nombre" name="nombre" [(ngModel)]="producto.nombre" required type="text" placeholder="Eje. teclado" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <span>Modelo</span>
+        <div class="col-md-8">
+          <input id="modelo" name="modelo" [(ngModel)]="producto.modelo" required type="text" placeholder="Eje. KA190" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <span>Marca</span>
+        <div class="col-md-8">
+          <input id="marca" name="marca" type="text" [(ngModel)]="producto.marca" required placeholder="Eje. Delux" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <span>Imagen</span>
+        <div class="col-md-8">
+          <input (change)="cargarImg($event)"  id="imagen" name="imagen"  required type="file"  class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <span>Descripción</span>
+        <div class="col-md-8">
+          <textarea id="descripcion" name="descripcion" [(ngModel)]="producto.descripcion" required type="text" class="form-control" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <table>
+          <tr>
+            <td>
+              <div>
+                <button class="btn btn-cancelar" type="reset">Cancelar</button>
+              </div>
+            </td>
+            <td>
+              <div class="btn">
+                <button (click)="registrar()" class="btn btn-Confirmar">Registrar</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
+
+

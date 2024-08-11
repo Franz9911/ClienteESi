@@ -1,0 +1,90 @@
+<div class="contenedor">
+    <div class="cabezera">
+        <h2>{{title}}</h2>
+    </div>
+    <!--carrito ESI-->
+    <div *ngIf="title==='carrito ESI'" class="contenido">
+        <table>
+            <tr>
+                <th>
+                    <div class="card"  *ngFor="let productoL of productoLote">
+                        
+                        <div class="card-img">
+                            <img [src]="'http://localhost:3001/uploads/'+ productoL.imagen"  >
+                        </div>
+                        <div class="card-contenido">
+                            <div class="card-descripcion">
+                                <h3>{{productoL.nombre}} {{productoL.modelo}} {{productoL.marca}}</h3>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. 
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam ab suscipit iusto 
+                                    quisquam et, rerum hic consectetur cupiditate quaerat quia dignissimos expedita a aut, 
+                                    nobis fuga quam eligendi distinctio ex!</p>
+                                    {{productoL.descripcion}}
+                            </div>
+                            <div class="card-btn">
+                                <button mat-stroked-button color=primary class="btn" (click)="retouchProductoLoteCarritoESI(productoL)">Modificar</button>
+                                <button mat-stroked-button  (click)="quitarProducto(productoL)">quitar del carrito</button>
+                            </div>
+                        </div>
+                        <div class="card-lote">
+                            <h3>Detalles del Lote</h3>
+                            <a>Unidades: {{productoL.unidades}}</a> <br>
+                            <a>Uds. disp: {{productoL.unidadesDispo}}</a><br>
+                            <a>Costo Bs: {{productoL.costoLote}}</a><br>
+                            <a >Salida Bs: {{productoL.precioVentaLoteSugerido}}</a><br>
+                            
+
+                        </div>
+
+                    </div>
+
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <!--carrito Cliente-->
+    <div *ngIf="title==='Carrito Cliente'" class="contenido">
+        <table>
+            <tr>
+                <th>
+                    <div class="card"  *ngFor="let producto of productoLote">
+                        
+                        <div class="card-img">
+                            <img [src]="'http://localhost:3001/uploads/'+ producto.imagen"  >
+                        </div>
+                        <div class="card-contenido">
+                            <div class="card-descripcion">
+                                <h3>{{producto.nombre}} {{producto.modelo}} {{producto.marca}}</h3>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. 
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam ab suscipit iusto 
+                                    quisquam et, rerum hic consectetur cupiditate quaerat quia dignissimos expedita a aut, 
+                                    nobis fuga quam eligendi distinctio ex!</p>
+                            </div>
+                            <div class="card-nombre">
+                                <abbr> cantidad 
+                                    <button>-</button>
+                                    <input type="number" min="1" max="9" step="1" value="1">
+                                    <button>+</button>
+                                </abbr>
+                                <button (click)="quitarProducto(producto)">quitar del carrito</button>
+                            </div>
+                        </div>
+                        <div class="card-precio">
+                            <p>Bs: 444.32 </p>
+                        </div>
+
+                    </div>
+
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="pie">
+        <h2>total: {{total}}Bs: </h2>
+        <button mat-stroked-button (click)="goToCompra()">comprar</button>
+    </div>
+</div>

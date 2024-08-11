@@ -1,0 +1,121 @@
+<div class="container">
+    <header>
+        <div class="logo">
+            <img src="assets/logoESI.png" width="90px" alt="Logo de la aplicación">
+        </div>
+        <div class="">
+            <abbr title="ver carrito ESI"><a (click)="goToCarritoESI()"><fa-icon class="icono"  [icon]="card"></fa-icon></a> </abbr>
+            <br>
+            <span>Carrito ESI</span>
+        </div>
+
+        <div class="app-name">
+            <h1>{{ nombreApp }}</h1>
+        </div>
+
+        <div class="">
+            <abbr title="ver carrito del cliente"><a (click)="goToCarritoCliente()"><fa-icon class="icono"  [icon]="card"></fa-icon></a>  </abbr>
+            <br>
+            <span>Carrito Cliente</span>
+        </div>
+
+        <div class="userAction">
+            <a>Usuario: {{ nombreUsuario }}</a>
+            <br>
+            <select >
+                <option> </option>
+                <option> administrador</option>
+                <option> ventas</option>
+                <option> tec</option>
+                
+            </select>
+            
+        </div>
+        <div class="userImg">
+            <img src="assets/usuario.png" width="50px" >
+            <br>
+            <button class="btn-cerar-sesion" (click)="cerrarSesion()">Cerrar Sesión</button>
+        </div>
+    </header>
+    <!--fin de la cabezera-->
+    <!--menu-->
+
+        <nav >
+           <div >
+              <ul >
+                 <li class="nav-item">
+                    <a class="nav-link" >Productos</a>
+                    <ul>
+                        <li><a href="#" [routerLink]="['/producto/registrar']">Registrar Producto</a></li>
+                        <li><a href="#" [routerLink]="['/producto/listar']">Lista de Productos</a></li>
+                        
+                    </ul>
+                 </li>
+                 <!--persona-->
+                 <li class="nav-item">
+                    <a class="nav-link" >Personas</a>
+                    <ul>
+                        <li><a href="#" [routerLink]="['/persona/registrar']">Registrar Persona</a></li>
+                        <li><a href="#" [routerLink]="['/persona/listar']">Lista de Personas</a></li>
+                        
+                    </ul>
+                 </li>
+                 <!--fin persona-->
+                 <!--venta-->
+                 <li class="nav-item">
+                    <a class="nav-link" href="#">Venta</a>
+                    
+                    <ul>
+                        
+                        <li><a href="#">Registro</a></li>
+                    </ul>
+                 </li>
+                 <!--fin venta-->
+                 <!--lote-->
+                 <li class="nav-item">
+                    <a class="nav-link" >Lotes de Productos</a>
+                    <ul>
+                        <li><a href="#" [routerLink]="['/lote/registrar']">Registrar Lote</a></li>     
+                    </ul>
+                 </li>
+                 <!--fin lote-->
+                 <!--compras-->
+                 <li class="nav-item">
+                    <a class="nav-link" >Compras</a>
+                    <ul>
+                        <li><a href="#" [routerLink]="['/compra/registrar']">Registrar Compra</a></li>     
+                    </ul>
+                 </li>
+                 <li class="nav-item d_none login_btn">
+                    <a class="nav-link" href="#">Login</a>
+                 </li>
+                 <li class="nav-item d_none">
+                    <a class="nav-link" href="#">Register</a>
+                 </li>
+                 <li class="nav-item d_none sea_icon">
+                    <a class="nav-link" href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i><i class="fa fa-search" aria-hidden="true"></i></a>
+                 </li>
+              </ul>
+           </div>
+        </nav>
+    
+    <!--fin menu-->
+
+
+
+    <div class="content">
+        <div class="content-right">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <footer>
+        <div class="contenidoFooter">
+            &copy; 2023 Derechos de autor
+        </div>
+        <div class="contenidoFooter"> solo para propocitos educativos</div>
+        <div class="contenidoFooter">
+            Fecha: {{ obtenerFecha() }}
+        </div>
+    </footer>
+</div>

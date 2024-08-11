@@ -1,0 +1,121 @@
+<div class="item-title"> 
+    <h2>Formulario de Registro de Compras</h2> 
+</div>
+<div class="conteiner">
+    <form action="" #compraForm="ngForm">
+        <table>
+            <tr>
+                <td> 
+                    <div class="form-grup">
+                        <div class="item"> 
+                            <div class="name">
+                                Fecha de Recepción:
+                            </div>
+                            <div class="data">
+                                <input id="p" required type="date" [(ngModel)]="compra.fechaRecepcion"> 
+                            </div>
+                        </div>
+                        <div [hidden]="true" >
+                            la fecha de recepcion no pede se 
+                        </div>
+                    </div>
+
+                    <div class="form-grup">
+                        <div class="item"> 
+                            <div class="name">
+                                Estado:
+                            </div>
+                            <div class="data-radio">
+                                <input name="estado" value="sol"  type="radio" class="radio" [(ngModel)]="compra.estado" required>
+                                <label for="dos">solicitada</label> 
+                                <input name="estado" value="rec" type="radio" class="radio" [(ngModel)]="compra.estado" required> 
+                                <label for="">recibida</label>  
+                                <input name="estado" value="can" type="radio" class="radio" [(ngModel)]="compra.estado" required> 
+                                <label for="">cancelada</label>                 
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-grup">
+                        <div class="item"> 
+                            <div class="name">
+                                Método de Pago:
+                            </div>
+                            <div class="data">
+                                <select id="p" required type="text" [value]="" [(ngModel)]="compra.metodoPago" #metodoPago="ngModel">
+                                    <option value="efe">Efectivo</option>
+                                    <option value="ban">Banco</option>
+                                    <option value="LTe">linea telefonica</option>
+                                    <option value="pla">plataforma</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div [hidden]="!metodoPago.invalid ||metodoPago.untouched" class="alert">
+                           <a >por favor seleccione un metodo de pago </a> 
+                        </div>
+                    </div>
+
+                    <div class="form-grup">
+                        <div class="item"> 
+                            <div class="name">
+                                Proveedor:
+                            </div>
+                            <div class="data">
+                                <select name="idProveedor" required type="text" [value]="" [(ngModel)]="compra.idProveedor" #idProveedor="ngModel">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div [hidden]="!idProveedor.invalid ||idProveedor.untouched" class="alert">
+                            por favor seleccione un proveedor
+                        </div>
+                    </div>
+
+
+                    <div class="form-grup">
+                        <div class="item-btn"> 
+                            <div class="b1">
+                                <button class="btn btn-cancelar" (click)="clearForm()">Cancelar</button>
+                            </div>
+                            <div class="b2">
+                                <button class="btn btn-Confirmar" (click)="confirmar()" [disabled]="compraForm.invalid">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+
+
+                    <div class="form-grup" hidden>
+                        <div class="item"> 
+                            <div class="name">
+                                prueba:
+                            </div>
+                            <div class="data">
+                                <input id="p" required type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-grup" hidden>
+                        <div class="item"> 
+                            <div class="name">
+                                prueba:
+                            </div>
+                            <div class="data">
+                                <select id="p" required type="text" [value]="0">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>    

@@ -1,0 +1,27 @@
+<h2 class="titulo-h2">Lista de Personas</h2>
+<div>
+<table class="tabla-gral">
+    <thead>
+        <tr>  
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>C.I.</th>
+            <th>Telefono</th>
+            <th>Fecha de registro</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="fila-tb" *ngFor="let persona of personas">
+            <td>{{ persona.nombre}}</td>
+            <td>{{ persona.apellidoP + ' ' + persona.apellidoM}}</td>
+            <td>{{ persona.ci}}</td>
+            <td>{{ persona.telefono}}</td>
+            <td>{{ persona.fechaRegistro}}</td>
+            <td><abbr title="Editar Persona" (click)="editar(persona)" ><fa-icon class="icono"  [icon]="faUserPen"></fa-icon> </abbr></td>
+            <td><abbr title="Eliminar Persona" (click)="eliminar(persona.id)" ><fa-icon class="icono"  [icon]="faUserSlash"></fa-icon> </abbr></td>    
+        </tr>
+    </tbody>
+</table>
+</div>

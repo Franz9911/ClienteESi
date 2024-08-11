@@ -1,0 +1,19 @@
+.imgPopup{
+    width: 35%;
+    height: fit-content;
+    border-radius: 10%;
+  }
+.modal-header, .modal-body, .modal-footer {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.modal-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #201E43;
+    color: #EEEEEE;
+  }
+  .form-group{
+    margin: 3px;
+  }
