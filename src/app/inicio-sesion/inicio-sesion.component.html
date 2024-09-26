@@ -1,0 +1,18 @@
+
+<div class="conteiner">
+
+
+ <div class="form-container">
+      <p class="title">Inicio de Sesion</p>
+      <form class="form">
+        <input type="email" class="input" placeholder="Ingresa tu nombre de usuario" [(ngModel)]="usuarioL.nombreU">
+        <input type={{ocultarContrasenha}} class="input" placeholder="ingresa tu contraseña" [(ngModel)]="usuarioL.contrasenha"> 
+        <span class="sign-up-link" (click)="viewContrasenha()">{{ocultarContrasenhaTexto}}</span>
+        <p class="page-link">
+          <!-- <span class="page-link-label">Olvidaste tu contraseña?</span> -->
+        </p>
+        <button class="form-btn" (click)="sendCredentials()">Ingresar</button>
+      </form>
+      
+    </div>
+</div>

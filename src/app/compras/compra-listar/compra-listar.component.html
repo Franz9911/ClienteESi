@@ -1,0 +1,72 @@
+<div class="conteiner">
+
+    <div class="filter" [hidden]="ocultarFiltros">
+        <h2>Busqueda</h2>
+        id: <br>
+        <input type="text" id="id" placeholder="Buscar..." [(ngModel)]="id">
+        Estado:
+        <select name="" id="estado" [(ngModel)]="estado">
+            <option value="null" >Todos</option>
+            <option value="rec" >recepcionados</option>
+            <option value="sol" >solicitados</option>
+            <option value="can" >concelados</option>
+        </select>
+        Fecha de registro:
+        <input type="date" id="fechaRegistro" [(ngModel)]="fechaReg">
+        Metodo de pago:
+        <select id="metodoPago" [(ngModel)]="metodoPago">
+            <option value="null" >Todos</option>
+            <option value="efe" >Efectivo</option>
+            <option value="ban" >Banco</option>
+            <option value="pla" >linea telefonica</option>
+        </select>
+        <button class="btn btn-filter" (click)="filterCompras() ">
+            <fa-icon class="icono" [icon]="faMagnifyingGlass"></fa-icon>
+            <br>buscar
+        </button>
+    </div>
+
+    <div class="disableFilter">
+        <br>
+        <button class="btn btn-disable" (click)="ocultarVerFiltro()" >
+            <fa-icon class="icono"  [icon]="faChevronRight" [hidden]="!ocultarFiltros"></fa-icon>
+            <fa-icon class="icono"  [icon]="faChevronLeft" [hidden]="ocultarFiltros"></fa-icon>
+        </button>
+    </div>
+
+    <div class="conteiner-table">
+        <h2>Lista de Compras</h2>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" >
+            <!-- Definir las columnas -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> id </th>
+              <td mat-cell *matCellDef="let element" class="filas"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef> estado </th>
+                <td mat-cell *matCellDef="let element" class="filas"> {{element.estado}} </td>
+            </ng-container>
+            <ng-container matColumnDef="fechaRegistro">
+                <th mat-header-cell *matHeaderCellDef> fecha de registro </th>
+                <td mat-cell *matCellDef="let element" class="filas"> {{element.fechaRegistro}}</td>
+            </ng-container>
+            <ng-container matColumnDef="fechaRecepcion">
+                <th mat-header-cell *matHeaderCellDef> fecha de recepcio </th>
+                <td mat-cell *matCellDef="let element" class="filas"> {{element.fechaRecepcion}}</td> 
+            </ng-container>
+            <ng-container matColumnDef="metodoPago">
+                <th mat-header-cell *matHeaderCellDef> fecha de recepcio </th>
+                <td mat-cell *matCellDef="let element" class="filas"> {{element.metodoPago}}</td> 
+            </ng-container>
+          
+           
+            <!-- Cabecera de la tabla -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <!-- Filas de la tabla -->
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="demo-table1">
+        </mat-paginator>
+
+    </div>
+</div>

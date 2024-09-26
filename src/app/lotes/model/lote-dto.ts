@@ -4,6 +4,7 @@ export class LoteDto {
     public costoLote!:number; 
     public unidadesDispo!:number
     public precioVentaLoteSugerido!:number;
+    //compra
     public idCompra!:number;
     //producto
     public producto!: number;

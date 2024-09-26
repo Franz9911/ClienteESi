@@ -1,12 +1,13 @@
 <h1 mat-dialog-title>Confirmación</h1>
 <div mat-dialog-content>
   <p>{{ data.message }}</p>
- <p>{{data.carritoLLeno}}</p> 
+  <div *ngFor="let entry of entries">
+    <a>{{ entry[0] }}: {{ entry[1] }}</a>
+  </div>
 </div>
-<div [hidden]="data.carritoLLeno">
+<div [hidden]="data.carritoLLeno && data.origen=='compra'" class="caution">
   Advertencia:
     el carritoESI esta vacio!!! 
-
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancelar</button>

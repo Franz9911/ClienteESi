@@ -1,0 +1,183 @@
+/*
+formulario de registro
+mostrar las personas 
+añadir roles
+modificar el estado 
+
+en persona
+aparecera un modal informando sobre el registro  de la persona para luego 
+cuando registremos una persona se debera hacer visibles los botones registrar como usuario o como cliente;
+
+cuando se registre el usuario se debe informar en un modal sobre su registro 
+si el registro es correcto se abilitara el formulario de roles para el usuario
+
+*/
+
+/*usuario solo puede modificar su fotografia
+
+usuario 
+mesianico
+Mess10%%
+
+*/  
+
+* {
+    font-family: sans-serif;
+}
+/*titulo del form o del la pagina*/
+.item-title {
+    width: 98%;
+    display: flex;
+    padding-left:2% ;
+    background: #c9c8c8;
+    height: 50px;
+}
+.conteiner{
+    width: 98%;
+    display: flex;
+    
+    padding-left:2% ;
+    padding-top: 3px;
+    flex-direction: row;
+
+    /* align-items: center;
+    justify-content: space-between;
+    background: red; */
+}
+form{
+    width: 98%;   
+}
+table{
+    width: 100%;
+    text-align: start;
+    background: #fff;
+    justify-content: flex-start
+
+}
+table tr td{
+    vertical-align: top;
+}
+.form-grup {
+    width: 95%;
+    border-radius: 15px; 
+    padding-bottom: 3px;
+}
+.item {
+    width: 100%;
+    display: flex;
+    /* margin-left: 50px; */
+    align-items: center;
+
+    background: #ddd;
+    height: 45px;
+    border-radius: 15px;
+    padding: 10px;
+}
+.name {
+    width: 30%;
+    font-size: larger;
+}
+.data {
+    border-bottom: 1px solid #555;
+    width: 70%;
+    display: inline-block;
+    /* margin-left: 50px; */
+    align-items: center;
+}
+input {
+    width: 90%;
+    border: none;
+    outline: 0px;
+    background: none;
+    padding: 0;
+    font: inherit;
+    text-align: center;
+}
+/*radio*/
+.data-radio{
+    width: 70%;
+    display: inline-flex;
+    align-items:center ;
+    justify-content: center;
+    text-align: end;
+    
+}
+input:checked + label{
+    font-weight: 600;
+}
+input:checked {
+    background: #c79215;
+    transform: scale(1.2);
+}
+input[type="radio"] {
+    content: '';
+    -webkit-appearance:none;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    margin: 25px;
+
+}
+
+/*select*/
+select{
+    width: 100%;
+    border: none;
+    outline: 0;
+    /* Remueve el borde en navegadores que puedan aplicar estilos adicionales */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
+    font: inherit;
+    text-align: center;
+    background: none;
+    initial-value: "";
+}
+
+.form-grup:focus-within .item {
+    background: #7e94e3;
+}
+
+.item:hover {
+    background: #a4b0da;
+}
+.b1 , .b2{
+    width: 50%;
+      
+}
+
+.item-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* margin-left: 50px; */
+    align-items: center;
+    justify-content: space-between;
+    background: #7e94e3;
+    height: 45px;
+    border-radius: 15px;
+    padding: 10px;
+}
+.btn{
+    width: 98%;
+    height: 40px;
+}
+
+/*alertas*/
+.alert{
+    
+    background-color: rgba(254, 7, 7, 0.5);
+    width: 100%;
+    margin-top: 5px;
+
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    height: 45px;
+    border-radius: 15px;
+    padding: 10px;
+}

@@ -1,0 +1,55 @@
+.conteiner{
+    margin: 2%;
+    width: 98%;
+}
+.conteiner-table{
+    width: 80;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+}
+table{
+    width: 80%;
+    background: #EEEEEE;
+    border-radius: 25px;
+}
+.f1{
+    width: 20%;
+}
+
+.item{
+    display: flex;    
+    background: #88D66C;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 25px;
+}
+.itemfalse{
+    display: flex;
+    background: #EEEEEE;
+    margin-top: 5px;
+    border-radius: 25px;
+}
+
+.name{
+    width: 20%;
+}
+.permisos{
+    
+    width: 80%;
+}
+button{
+    margin: 10px;
+    border-radius: 10px;
+    background: none;
+    border: none;
+}
+.icon{
+    font-size: 30px;
+}
+.div_btn{
+    display: flex;
+    flex-direction: column;
+}

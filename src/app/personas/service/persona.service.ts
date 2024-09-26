@@ -12,25 +12,29 @@ export class PersonaService {
 
   constructor(private _http: HttpClient) { }
 
-    // Operación listar
-    /*listar(nombre: string, ): Observable<any> {
-      let params = new HttpParams();
-      params = params.set('nombre', nombre)
-      const headers = this.getHeaders();
-      return this._http.get<any>(`${environment.apiUrl}/persona/listar`, {
-         params, observe: 'response'
-      });
-    }
-  getHeaders() {
-    throw new Error('Method not implemented.');
-  }*/
-  public listar():Observable<Persona[]>{  
-    return this._http.get<Persona[]>(`${environment.apiUrl}/persona/listar`);
+  private getHeaders(): HttpHeaders {
+    const token = sessionStorage.getItem('token');
+    return new HttpHeaders({ 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' });
   }
+
+  public listPersonasSinUsuario():Observable<Persona[]>{  
+    return this._http.get<Persona[]>(`${environment.apiUrl}/persona/sinUsuario`);
+  }
+
+
+  public listar():Observable<Persona[]>{  
+    const headers = this.getHeaders();
+    console.log(headers.keys);
+    return this._http.get<Persona[]>(`${environment.apiUrl}/persona/listar`,{
+      headers: headers
+    });
+  }
+
   public guardar(persona: Persona): Observable<any> {
     console.log("Hola desde el servicio guardar");
     console.log(persona);
-    return this._http.post<any>(`http://localhost:3000/persona/agregar`, persona, {
+    return this._http.post<any>(`http://localhost:3000/persona/agregar`, 
+    persona, {
        observe: 'response',headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

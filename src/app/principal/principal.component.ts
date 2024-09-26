@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { CarritoService } from '../carritos/service/carrito.service';
+import { LoginService } from '../inicio-sesion/service/login.service';
+import { UsuarioService } from '../usuarios/service/usuario.service';
 
 @Component({
   selector: 'app-principal',
@@ -10,11 +12,11 @@ import { CarritoService } from '../carritos/service/carrito.service';
 })
 export class PrincipalComponent implements OnInit {
   nombreApp = 'Sistema de gestion ESI-Tech';
-  nombreUsuario = 'Franz';
+  nombreUsuario = '';
   idRolSeleccionado = 0;
 
   card=faCartShopping;
-  //roles: RolesDto[] = [];
+  roles: any;
 
   mostrarModuloPersona: boolean = false;
   mostrarModuloSolicitudServicio: boolean = false;
@@ -38,10 +40,29 @@ export class PrincipalComponent implements OnInit {
     private _router: Router,
     private changeDetectorRef: ChangeDetectorRef,
     private carritoServ: CarritoService,
+    private loginServ:LoginService,
+    
   ) { }
 
   ngOnInit(): void {
+    this.nombreUsuario=sessionStorage.getItem('usuario')+"";
+    const rolesAux=sessionStorage.getItem('roles');
+    if(rolesAux!=null ){
+      this.roles=JSON.parse(rolesAux);
+      console.log("roles user: ");
+      console.log(this.roles);
+    }else{
+      alert("el usuarios no tiene ningun rol asignado solicita tus credenciales al adminstrador")
+    }
+    if (!this.loginServ.getIsUsuarioAutoriado()) {
+      this._router.navigate(['/']);
+    }
+
+
+    
+    
   }
+
   obtenerFecha(): string {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     const fechaActual = new Date();
@@ -50,16 +71,16 @@ export class PrincipalComponent implements OnInit {
 
   seleccionarRol(event: any) {
     const idRol = event.target.value;
-    sessionStorage.setItem('idRol', idRol);
-    this.verificarRoles(idRol);
+    sessionStorage.setItem('roLSelecionado', idRol);
+    //this.verificarRoles(idRol);
   }
   //ir la carrito esi
   goToCarritoESI(){
     console.log("hola desde el carrito");
     this.carritoServ.changeTitle("carrito ESI");
     //"skipLocationChange: true" forzar la recarga del componente carrito.
-    this._router.navigate(['/carrito'], { skipLocationChange: true }).then(() => {
-      this._router.navigate(['/carrito']);
+    this._router.navigate(['/EsiTech/carrito'], { skipLocationChange: true }).then(() => {
+      this._router.navigate(['/EsiTech/carrito']);
     });
   }
 
@@ -77,8 +98,10 @@ export class PrincipalComponent implements OnInit {
     sessionStorage.removeItem('idRol');
     sessionStorage.removeItem('usuario');
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('roles');
     sessionStorage.clear();
-    //this._router.navigate(['/login']);
+    this.loginServ.annularUsuario();
+    this._router.navigate(['/']);
   }
 
   verificarRoles(idRol = 0){

@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 //productos
 import { ProductoRegistrarComponent } from './productos/producto-registrar/producto-registrar.component';
 import { ProductoListarComponent } from './productos/producto-listar/producto-listar.component';
@@ -24,9 +26,19 @@ import { PersonaRegistrarComponent } from './personas/persona-registrar/persona-
 import { CarritoComponent } from './carritos/carrito/carrito.component';
 //lote
 import { LoteRegistrarComponent } from './lotes/lote-registrar/lote-registrar.component';
+import { LoteListarComponent } from './lotes/lote-listar/lote-listar.component';
 //compras
 import { CompraRegistrarComponent } from './compras/compra-registrar/compra-registrar.component';
+import { CompraListarComponent } from './compras/compra-listar/compra-listar.component';
+
 import { MensajeConfirmacionComponent } from './modals/mensaje-confirmacion/mensaje-confirmacion.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { UsuarioRegistrarComponent } from './usuarios/usuario-registrar/usuario-registrar.component';
+import { RolesAsignarComponent } from './roles/roles-asignar/roles-asignar.component';
+
+//proveedor
+import { ProveedorRegistrarComponent } from './proveedores/proveedor-registrar/proveedor-registrar.component';
+
 
 
 
@@ -48,10 +60,16 @@ import { MensajeConfirmacionComponent } from './modals/mensaje-confirmacion/mens
     ModalFormularioProductoLoteComponent,
     //compra
     CompraRegistrarComponent,
+    CompraListarComponent,
     MensajeConfirmacionComponent,
-    
-   
-    
+    LoteListarComponent,
+    InicioSesionComponent,
+    //usuario
+    UsuarioRegistrarComponent,
+    RolesAsignarComponent,
+    //proveedor
+    ProveedorRegistrarComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -63,6 +81,8 @@ import { MensajeConfirmacionComponent } from './modals/mensaje-confirmacion/mens
     NoopAnimationsModule,
     MatDialogModule,
     MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

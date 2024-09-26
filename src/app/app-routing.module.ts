@@ -12,11 +12,27 @@ import { PersonaRegistrarComponent } from './personas/persona-registrar/persona-
 import { CarritoComponent } from './carritos/carrito/carrito.component';
 
 import { LoteRegistrarComponent } from './lotes/lote-registrar/lote-registrar.component';
+import { LoteListarComponent } from './lotes/lote-listar/lote-listar.component';
 
 import { CompraRegistrarComponent } from './compras/compra-registrar/compra-registrar.component';
+import { CompraListarComponent } from './compras/compra-listar/compra-listar.component';
+
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+
+import { UsuarioRegistrarComponent } from './usuarios/usuario-registrar/usuario-registrar.component';
+import { RutasProtegidasGuard } from './inicio-sesion/rutas-protegidas.guard';
+
+import { RolesAsignarComponent } from './roles/roles-asignar/roles-asignar.component';
+
+import { ProveedorRegistrarComponent } from './proveedores/proveedor-registrar/proveedor-registrar.component';
 const routes: Routes = [
-  { path: '', 
-  component: PrincipalComponent,
+  {
+    path: '',
+    component: InicioSesionComponent,
+    children:[],
+  },
+  { path: 'EsiTech', 
+  component: PrincipalComponent,canActivate:[RutasProtegidasGuard],
     children:[
       {path: 'producto/registrar',component: ProductoRegistrarComponent},
       {path:'persona/registrar',component:PersonaRegistrarComponent},
@@ -24,7 +40,12 @@ const routes: Routes = [
       {path: 'producto/listar',component:ProductoListarComponent},
       {path: 'carrito',component:CarritoComponent},
       {path: 'lote/registrar',component:LoteRegistrarComponent},
+      {path: 'lote/listar',component:LoteListarComponent},
       {path: 'compra/registrar',component:CompraRegistrarComponent},
+      {path: 'compra/listar',component:CompraListarComponent},
+      {path: 'usuario/registrar',component:UsuarioRegistrarComponent},
+      {path: 'rolesUsuario/asignar',component:RolesAsignarComponent},
+      {path: 'proveedor/registrar',component:ProveedorRegistrarComponent},
     ]
   },
 ];

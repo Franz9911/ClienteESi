@@ -1,0 +1,38 @@
+<div class="conteiner">
+  <h2>Lista de lotes de producto </h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" >
+
+    <!-- Definir las columnas -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element" class="filas" (click)="prueba(element.id)" > probando</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element" class="filas"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="genero">
+      <th mat-header-cell *matHeaderCellDef> Género </th>
+      <td mat-cell *matCellDef="let element" (click)="prueba2(element.producto.marca)"> {{element.producto.marca}} </td>
+      
+    </ng-container>
+    <ng-container matColumnDef="in">
+        <th mat-header-cell *matHeaderCellDef> in </th>
+        <td mat-cell *matCellDef="let element"> {{element.producto.modelo}} </td>     
+      </ng-container>
+
+  
+    <!-- Cabecera de la tabla -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Filas de la tabla -->
+    <tr mat-row
+    
+    *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="demo-table1">
+  </mat-paginator>
+  
+</div>
+

@@ -1,3 +1,6 @@
+.container{
+  width: 100%;
+}
 header{
     display: flex;
     justify-content: space-between;
@@ -17,11 +20,12 @@ h1{
 footer {
     background-color: #201E43;
     position: fixed;
-    
+    display: flex;
+    height: 50px;
     bottom: 0;
     align-items: center;
     justify-content: space-between;
-    width: 99%;
+    width: 100%;
 }
 
 .contenidoFooter{
@@ -82,7 +86,8 @@ nav li ul {
     color: #eee8e8;
   }
   .content{
-    margin-bottom: 50px;
+    padding-bottom: 80px;
+    
   }
   /*icono*/
   .icono{

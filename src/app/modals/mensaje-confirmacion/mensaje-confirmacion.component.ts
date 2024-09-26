@@ -9,11 +9,13 @@ export class MensajeConfirmacionComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<MensajeConfirmacionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { message: string ,carritoLLeno:boolean}
+    @Inject(MAT_DIALOG_DATA) public data: { message: string,datosDeObjeto:any, carritoLLeno:boolean,origen:string}
   ) { }
     
+  entries: [string, any][] = [];
   ngOnInit(): void {
-    console.log(this.data.carritoLLeno)
+    console.log(this.data.carritoLLeno);
+    this.entries = Object.entries(this.data.datosDeObjeto);
     
   }
   onConfirm(): void {

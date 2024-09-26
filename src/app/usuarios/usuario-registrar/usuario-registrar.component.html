@@ -1,0 +1,139 @@
+<div class="item-title"> 
+    <h2>Formulario de Registro de Usuarios</h2> 
+</div>
+<div class="conteiner">
+    <form action="" #usuarioForm="ngForm">
+        <table>
+            <tr>
+                <td> 
+                    <div class="form-grup">
+                        <div class="item"> 
+                            <div class="name">
+                                Nombre de Usuario:
+                            </div>
+                            <div class="data">
+                                <input id="nombreU" name="nombreU" minlength="5" required type="text" 
+                                [(ngModel)]="usuario.nombreU" #nombreU="ngModel"> 
+                            </div>
+                        </div>
+                        <div *ngIf="nombreU.invalid && (nombreU.dirty && nombreU.touched)">
+                           <p *ngIf="usuario.nombreU.length<1" class="danger">el nombre de usuario es necesario.</p> 
+                           <p *ngIf="usuario.nombreU.length>0 && usuario.nombreU.length<5" class="danger"> el usuario reuiere de 5 letras</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grup">
+                        <div class="item"> 
+                            <div class="name">
+                                Contraseña:
+                            </div>
+                            <div class="data">
+                                <input id="contrasenha" name="contrasenha" min="8" required type="text" [(ngModel)]="usuario.contrasenha" #contrasenha="ngModel"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"> 
+                            </div>
+                        </div>
+                        <div *ngIf="contrasenha.invalid && contrasenha.dirty && contrasenha.touched">
+                            <p *ngIf="usuario.contrasenha.length<1" class="danger"> 
+                                la Contraseña es necesaria para registrar un usuario
+                            </p>
+                            <p *ngIf="usuario.contrasenha.length>0 && usuario.contrasenha.length<8" class="danger">
+                                La Contraseña debe tener una longitud minima de 8 caracteres.
+                            </p>
+                            <p *ngIf="contrasenha.invalid && usuario.contrasenha.length>=8" class="danger">
+                                La Contraseña debe contener mayusculas, minusculas, caracteres especiales y numeros
+                            </p>
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-grup" >
+                        <div class="item"> 
+                            <div class="name">
+                                estado:
+                            </div>
+                            <div class="data">
+                                <select id="estado" name="estado" required type="text"  [(ngModel)]="usuario.estado" #estado="ngModel">
+                                    <option value="act">activo</option>
+                                    <option value="bloc">bloquado</option>
+                                    <option value="vac">vaccion</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-grup">
+                        <div class="item"> 
+                            <div class="name">
+                                Correo Electronico:
+                            </div>
+                            <div class="data">
+                                <input id="correoE" name="correoE" type="email" [(ngModel)]="usuario.correoE" #correoE="ngModel" required minlength="9" > 
+                            </div>
+                        </div>
+                        <div [hidden]="true" >
+                            la fecha de recepcion no pede se 
+                        </div>
+                    </div>
+
+                    <div class="form-grup">
+                        <div class="item"> 
+                            <div class="name">
+                                Direccion:
+                            </div>
+                            <div class="data">
+                                <input id="direccion" name="direccion" required  type="" [(ngModel)]="usuario.direccion" #direccion="ngModel"> 
+                            </div>
+                        </div>
+                        <div [hidden]="true" >
+                            la fecha de recepcion no pede se 
+                        </div>
+                    </div>
+
+
+                    <div class="form-grup">
+                        <div class="item-btn"> 
+                            <div class="b1">
+                                <button class="btn btn-cancelar" (click)="clearForm()">Cancelar</button>
+                            </div>
+                            <div class="b2">
+                                <button class="btn btn-Confirmar" (click)="registrarUsuario()" [disabled]="usuarioForm.invalid">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-grup" >
+                        <div class="item"> 
+                            <div class="name">
+                                Personas:
+                            </div>
+                            <div class="data">
+                                <select id="persona" name="persona" required  [(ngModel)]="usuario.persona" (ngModelChange)="changePersona($event)" #persona="ngModel">
+                                    <option *ngFor="let persona of personas" [ngValue]="persona">
+                                        {{ persona.nombre }} {{persona.apellidoP}}
+                                      </option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-grup" *ngIf="usuario.persona">
+                        <div class="item2">
+                            <h3>Persona Seleccinada: </h3><br>
+                           <b>Nombre:</b>  {{personaAux.nombre}} <br>
+                           <b>Apellido Paterno:</b>  {{personaAux.apellidoP}} <br>
+                          <b>Apellido Materno:</b>   {{personaAux.apellidoM}} <br>
+                          <b>Cedula:</b>   {{personaAux.ci}}
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+        <button (click)="asignarRoles()">asignar roles</button>
+    </form>
+    
+</div>    
+

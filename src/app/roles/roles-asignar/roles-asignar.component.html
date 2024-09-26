@@ -1,0 +1,109 @@
+
+<div class="conteiner">         
+    <h1>Roles de Usuario</h1>
+    <div class="conteiner-table">
+        <table>
+            <th class="f1">
+                <tr>
+                    <h2>Datos Personales</h2>
+                    <div class="data">
+                        
+                            <div >
+                                <!--aun no se grega las fotos de usuario--> 
+                                <img src="assets/usuario.png" height="100px">
+                            </div>
+                            <!-- <div >
+                                <a>nombres: {{usuarioAux.persona.nombre}}</a> <br>
+                                <a >apellidos: {{usuarioAux.persona.apellidoP}} {{usuarioAux.persona.apellidoM}}</a> <br>
+                                <a href="">ci: {{usuarioAux.persona.ci}} </a> <br>
+                                <a href="">nombreUsuario: {{usuarioAux.nombreU}}</a>
+                            </div> -->
+                    </div>
+                </tr>
+            <tr>
+                
+            </tr>
+            </th>
+            <th>
+                <tr>
+                <h2>Roles Asignados</h2>
+                <div class="item" [class.itemfalse]="!admi_1">
+                    <div class="name">
+                        <a >Administrador</a>
+                        <div class="icons">
+                            <button (click)="addRol(1)" [disabled]="admi_1">
+                                <div class="div_btn">
+                                    <fa-icon class="icon" [icon]="faSquareCheck"></fa-icon>
+                                    Agregar
+                                </div>
+                            </button>  
+                            <button (click)="removeRol(1)" [disabled]="!admi_1">                                
+                                <div class="div_btn">
+                                    <fa-icon class="icon" [icon]="faTrashCan"> </fa-icon>
+                                    Quitar
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="permisos">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur fugit ullam quo ea, 
+                        nobis maxime ipsa laborum dolor? Nobis consectetur 
+                        exercitationem enim laboriosam quibusdam dignissimos nihil distinctio laudantium. Nobis, placeat!
+                    </div>
+                </div>
+                <div class="item" [class.itemfalse]="!serT_2">
+                    <div class="name">
+                        <a>Tecnico</a> 
+                        <div class="icons">
+                            <button (click)="addRol(2)" [disabled]="serT_2">
+                                <div class="div_btn">
+                                    <fa-icon class="icon" [icon]="faSquareCheck"></fa-icon>
+                                    Agregar
+                                </div>
+                            </button>  
+                            <button (click)="removeRol(2)" [disabled]="!serT_2">                                
+                                <div class="div_btn">
+                                    <fa-icon class="icon" [icon]="faTrashCan"> </fa-icon>
+                                    Quitar
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="permisos">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur fugit ullam quo ea, 
+                        nobis maxime ipsa laborum dolor? Nobis consectetur 
+                        exercitationem enim laboriosam quibusdam dignissimos nihil distinctio laudantium. Nobis, placeat!
+                    </div>
+                </div>
+                <div class="item" [class.itemfalse]="!vent_3">
+                    <div class="name">
+                        <a>Vendedor</a>  
+                        <div class="icons">
+                            <button (click)="addRol(3)" [disabled]="vent_3">
+                                <div class="div_btn">
+                                    <fa-icon class="icon" [icon]="faSquareCheck"></fa-icon>
+                                    Agregar
+                                </div>
+                            </button>  
+                            <button (click)="removeRol(3)" [disabled]="!vent_3">                                
+                                <div class="div_btn">
+                                    <fa-icon class="icon" [icon]="faTrashCan"> </fa-icon>
+                                    Quitar
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="permisos">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur fugit ullam quo ea, 
+                        nobis maxime ipsa laborum dolor? Nobis consectetur 
+                        exercitationem enim laboriosam quibusdam dignissimos nihil distinctio laudantium. Nobis, placeat!
+                    </div>
+                </div>
+
+
+            </tr>
+            </th>
+        </table> 
+
+    </div>
+</div>

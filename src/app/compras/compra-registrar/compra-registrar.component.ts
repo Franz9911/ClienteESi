@@ -58,13 +58,15 @@ export class CompraRegistrarComponent implements OnInit {
     this.compra=new CompraDto();
     this.compra.estado="sol";
   }
-
+//mensae de confirmacion 
   confirmar(){
     const dialogRef = this.dialog.open(MensajeConfirmacionComponent, {
       width: '400px',
       data: { 
         message: '¿Está seguro que desea registrar la compra?',
-        carritoLLeno: this.carritoServ.getIsFullCarritoESI(), 
+        carritoLLeno: this.carritoServ.getIsFullCarritoESI(),
+        datosDeObjeto:this.compra, 
+        origen:"compra",
       }
     });
 

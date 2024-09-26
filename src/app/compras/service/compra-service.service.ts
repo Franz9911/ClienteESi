@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CompraDto } from '../model/compra-dto';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { Compra } from '../model/compra';
 
 
 
@@ -19,5 +21,8 @@ export class CompraServiceService {
         'Content-Type': 'application/json'
       })
     })
+  }
+  public listAllCompras(id:string,estado:string,fechaReg:string,metodoPago:string):Observable<Compra[]>{
+    return this._http.get<Compra[]>(`${environment.apiUrl}/compra/listar/${id}/${estado}/${fechaReg}/${metodoPago}`)
   }
 }

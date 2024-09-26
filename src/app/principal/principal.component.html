@@ -22,12 +22,9 @@
         <div class="userAction">
             <a>Usuario: {{ nombreUsuario }}</a>
             <br>
-            <select >
-                <option> </option>
-                <option> administrador</option>
-                <option> ventas</option>
-                <option> tec</option>
-                
+            <select (change)="seleccionarRol($event)" >
+                <option>selecciones un rol</option>
+                <option *ngFor="let rol of roles">{{rol.nombre}} </option>
             </select>
             
         </div>
@@ -46,8 +43,8 @@
                  <li class="nav-item">
                     <a class="nav-link" >Productos</a>
                     <ul>
-                        <li><a href="#" [routerLink]="['/producto/registrar']">Registrar Producto</a></li>
-                        <li><a href="#" [routerLink]="['/producto/listar']">Lista de Productos</a></li>
+                        <li><a href="#" [routerLink]="['/EsiTech/producto/registrar']">Registrar Producto</a></li>
+                        <li><a href="#" [routerLink]="['/EsiTech/producto/listar']">Lista de Productos</a></li>
                         
                     </ul>
                  </li>
@@ -55,19 +52,29 @@
                  <li class="nav-item">
                     <a class="nav-link" >Personas</a>
                     <ul>
-                        <li><a href="#" [routerLink]="['/persona/registrar']">Registrar Persona</a></li>
-                        <li><a href="#" [routerLink]="['/persona/listar']">Lista de Personas</a></li>
+                        <li><a href="#" [routerLink]="['/EsiTech/persona/registrar']">Registrar Persona</a></li>
+                        <li><a href="#" [routerLink]="['/EsiTech/persona/listar']">Lista de Personas</a></li>
                         
                     </ul>
                  </li>
                  <!--fin persona-->
+                 <!--usuario-->
+                 <li class="nav-item">
+                    <a class="nav-link" >Usuario</a>
+                    <ul>
+                        <li><a href="#" [routerLink]="['/EsiTech/usuario/registrar']">Registrar Usuario</a></li> 
+                          
+                    </ul>
+                 </li>
+                 <!--fin usuario-->
+
                  <!--venta-->
                  <li class="nav-item">
-                    <a class="nav-link" href="#">Venta</a>
+                    <a class="nav-link" >Venta</a>
                     
                     <ul>
                         
-                        <li><a href="#">Registro</a></li>
+                        <li><a >Registro</a></li>
                     </ul>
                  </li>
                  <!--fin venta-->
@@ -75,7 +82,8 @@
                  <li class="nav-item">
                     <a class="nav-link" >Lotes de Productos</a>
                     <ul>
-                        <li><a href="#" [routerLink]="['/lote/registrar']">Registrar Lote</a></li>     
+                        <li><a href="#" [routerLink]="['/EsiTech/lote/registrar']">Registrar Lote</a></li> 
+                        <li><a href="#" [routerLink]="['/EsiTech/lote/listar']">Listar Lotes</a></li>   
                     </ul>
                  </li>
                  <!--fin lote-->
@@ -83,11 +91,16 @@
                  <li class="nav-item">
                     <a class="nav-link" >Compras</a>
                     <ul>
-                        <li><a href="#" [routerLink]="['/compra/registrar']">Registrar Compra</a></li>     
+                        <li><a href="#" [routerLink]="['/EsiTech/compra/registrar']">Registrar Compra</a></li>
+                        <li><a href="#" [routerLink]="['/EsiTech/compra/listar']">Listar Compras</a></li>     
                     </ul>
                  </li>
-                 <li class="nav-item d_none login_btn">
-                    <a class="nav-link" href="#">Login</a>
+                 <!--fin compras-->
+                 <li class="nav-item">
+                    <a class="nav-link" >Proveedor</a>
+                    <ul>
+                        <li><a href="#" [routerLink]="['/EsiTech/proveedor/registrar']">Registrar Proveedor</a></li>    
+                    </ul>
                  </li>
                  <li class="nav-item d_none">
                     <a class="nav-link" href="#">Register</a>
@@ -104,9 +117,7 @@
 
 
     <div class="content">
-        <div class="content-right">
-            <router-outlet></router-outlet>
-        </div>
+        <router-outlet></router-outlet>
     </div>
 
     <footer>

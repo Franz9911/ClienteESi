@@ -80,7 +80,7 @@ export class CarritoComponent implements OnInit {
     });
   }
 
-  comprar1(){
+  /*comprar1(){
     //rergistrar compra 
     this.carritoServ.keepOneDBLote1().subscribe({
       next: (response: HttpResponse<any>) => {
@@ -91,10 +91,10 @@ export class CarritoComponent implements OnInit {
       console.log(error)
     }
   })
-  }
+  }*/
 
   goToCompra(){
-    this._router.navigate(['/compra/registrar'])
+    this._router.navigate(['/EsiTech/compra/registrar'])
   }
 
   calcularTotal(){
